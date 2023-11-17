@@ -38,37 +38,39 @@ public class Calculator extends JFrame{
                 try {
                     num1 = Double.parseDouble(n1);
                     num2 = Double.parseDouble(n2);
+
+                    switch (op) {
+                        case 0:
+                            res = num1 + num2;
+                            break;
+                        case 1:
+                            res = num1 - num2;
+                            break;
+                        case 2:
+                            res = num1 * num2;
+                            break;
+                        case 3:
+                            res = num1 / num2;
+                            break;
+                    }
+
+                    if(res % 1 == 0) {
+                        int a = (int)res;
+                        lblResult.setText(Integer.toString(a));
+                    } else {
+                        lblResult.setText(Double.toString(res));
+                    }
+
+                    tfNumber1.setText("");
+                    tfNumber2.setText("");
+                    cbOperations.setSelectedIndex(0);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "ENTER A VALID NUMBER");
                 }
 
 
 
-                switch (op) {
-                    case 0:
-                        res = num1 + num2;
-                        break;
-                    case 1:
-                        res = num1 - num2;
-                        break;
-                    case 2:
-                        res = num1 * num2;
-                        break;
-                    case 3:
-                        res = num1 / num2;
-                        break;
-                }
 
-                if(res % 1 == 0) {
-                    int a = (int)res;
-                    lblResult.setText(Integer.toString(a));
-                } else {
-                    lblResult.setText(Double.toString(res));
-                }
-
-                tfNumber1.setText("");
-                tfNumber2.setText("");
-                cbOperations.setSelectedIndex(0);
             }
         });
     }
